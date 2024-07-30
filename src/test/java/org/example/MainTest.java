@@ -59,6 +59,8 @@ public class MainTest {
             MutableValue mutableValue = new MutableValue(10);
             map.put("key1", mutableValue);
 
+            store.commit();
+
             mutableValue.setValue(20);
 
             MutableValue retrievedValue = map.get("key1");
@@ -83,6 +85,9 @@ public class MainTest {
             // Need to use "ArrayLsit" instead of "List.of", since ArrayList allows for modification
             List<MutableValue> theList = new ArrayList<>(List.of(mutableValue));
             map.put("key1", theList);
+
+            store.commit();
+
             mutableValue.setValue(20);
             theList.add(new MutableValue(30));
         }
@@ -108,6 +113,9 @@ public class MainTest {
             // Need to use "ArrayLsit" instead of "List.of", since ArrayList allows for modification
             List<MutableValueRecord> theList = new ArrayList<>(List.of(new MutableValueRecord(mutableValue, "first")));
             map.put("key1", theList);
+
+            store.commit();
+
             mutableValue.setValue(20);
             theList.add(new MutableValueRecord(new MutableValue(30), "second"));
         }
@@ -131,6 +139,9 @@ public class MainTest {
             // Need to use "ArrayLsit" instead of "List.of", since ArrayList allows for modification
             List<MutableValueRecord> theList = new ArrayList<>(List.of(new MutableValueRecord(mutableValue, "first")));
             map.put("key1", theList);
+
+            store.commit();
+
             mutableValue.setValue(20);
             MutableValueRecord second = new MutableValueRecord(new MutableValue(30), "second");
             theList.add(second);
